@@ -81,24 +81,21 @@ const clearCalc = () => {
 
 
 const runOperate = () => {
-    calc.operate(`${currentNumberOne} ${currentOperator} ${currentNumberTwo}`);
+    calcAnswer.textContent = calc.operate(`${currentNumberOne} ${currentOperator} ${currentNumberTwo}`);
 };
 
 
-const inputDigit = () => {
+const inputDigit = function() {
     if (currentSelection === "numberOne") {
-        currentNumberOne += "619";
+        currentNumberOne += this.textContent;
         numberOneBtn.textContent = currentNumberOne;
-
-        console.log(this.textContent);
     } else if (currentSelection === "numberTwo") {
-        currentNumberTwo += digit;
+        currentNumberTwo += this.textContent;
+        numberTwoBtn.textContent = currentNumberTwo;
     }
 }
 
-
 digitBtns.forEach((btn) => {
-    btn.addEventListener('click', e => {});
-    btn.dispatchEvent(new Event('click'));  
+    btn.addEventListener('click', inputDigit);
 });
 
