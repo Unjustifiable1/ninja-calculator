@@ -1,8 +1,8 @@
 // SET VARIABLES
 
-const DEFAULT_NUMBER_ONE = 0;
+const DEFAULT_NUMBER_ONE = "";
 const DEFAULT_OPERATOR = "+";
-const DEFAULT_NUMBER_TWO = 0;
+const DEFAULT_NUMBER_TWO = "";
 const DEFAULT_SELECTION = "numberOne"
 
 let currentNumberOne = DEFAULT_NUMBER_ONE;
@@ -24,7 +24,8 @@ const numberTwoBtn = document.getElementById('numberTwo');
 const calcAnswer = document.getElementById('calcAnswer');
 const equalsBtn = document.getElementById('equals');
 const clearBtn = document.getElementById('clear');
-const calcOperatorBtn = document.querySelectorAll('.calcOperator');
+const calcOperatorBtns = document.querySelectorAll('.calcOperator');
+const digitBtns = document.querySelectorAll('.digit');
 
 
 // DOM INTERACTIONS
@@ -32,6 +33,8 @@ const calcOperatorBtn = document.querySelectorAll('.calcOperator');
 numberOneBtn.onclick = () => setCurrentSelection('numberOne');
 numberTwoBtn.onclick = () => setCurrentSelection('numberTwo');
 clearBtn.onclick = () => clearCalc();
+equalsBtn.onclick = () => runOperate();
+
 
 
 // CALCULATOR FUNCTION
@@ -67,7 +70,7 @@ function Calculator() {
 
 let calc = new Calculator;
 
-console.log(calc.operate("10 + 7"));
+console.log(calc.operate(`${currentNumberOne} ${currentOperator} ${currentNumberTwo}`));
 
 
 // CALCULATOR FUNCTIONALITY
@@ -75,3 +78,27 @@ console.log(calc.operate("10 + 7"));
 const clearCalc = () => {
 
 };
+
+
+const runOperate = () => {
+    calc.operate(`${currentNumberOne} ${currentOperator} ${currentNumberTwo}`);
+};
+
+
+const inputDigit = () => {
+    if (currentSelection === "numberOne") {
+        currentNumberOne += "619";
+        numberOneBtn.textContent = currentNumberOne;
+
+        console.log(this.textContent);
+    } else if (currentSelection === "numberTwo") {
+        currentNumberTwo += digit;
+    }
+}
+
+
+digitBtns.forEach((btn) => {
+    btn.addEventListener('click', e => {});
+    btn.dispatchEvent(new Event('click'));  
+});
+
