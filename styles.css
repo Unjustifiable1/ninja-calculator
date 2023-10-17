@@ -6,8 +6,9 @@
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
+    box-sizing: border-box;
 
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 
@@ -46,6 +47,44 @@ nav a:hover {
     color: #000;
     background-color: hsl(115, 93%, 59%);
 }
+
+
+/* MAIN */
+.calculatorApp * {
+    font-size: 2rem;
+}
+
+
+main section {
+    background-color: #bbb;
+    padding: 2rem;
+    margin: 3rem;
+    width: 500px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#sectionLeft {
+    flex-direction: column;
+}
+
+/* SECTION LEFT */
+.calcInputContainer,
+.calcAnswerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 80%;
+    padding: 1rem;
+}
+
+
+
+
+/* SECTION RIGHT */
 
 
 /* header and footer defaults */
