@@ -57,13 +57,13 @@ nav a:hover {
 
 main section {
     background-color: #bbb;
-    padding: 2rem;
-    margin: 3rem;
-    width: 500px;
+    padding: 1rem;
+    margin: 2rem;
+    min-width: 350px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 #sectionLeft {

@@ -99,3 +99,13 @@ digitBtns.forEach((btn) => {
     btn.addEventListener('click', inputDigit);
 });
 
+
+const changeOperator = function() {
+    console.log(`${this.textContent}`);
+    currentOperator = this.textContent;
+    operator.textContent = currentOperator;
+}
+
+calcOperatorBtns.forEach((btn) => {
+    btn.addEventListener('click', changeOperator);
+});
