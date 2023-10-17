@@ -1,13 +1,12 @@
 // SET VARIABLES
 
-const DEFAULT_NUMBER_ONE = "";
+const DEFAULT_NUMBERS = "0";
 const DEFAULT_OPERATOR = "+";
-const DEFAULT_NUMBER_TWO = "";
 const DEFAULT_SELECTION = "numberOne"
 
-let currentNumberOne = DEFAULT_NUMBER_ONE;
+let currentNumberOne = DEFAULT_NUMBERS;
 let currentOperator = DEFAULT_OPERATOR;
-let currentNumberTwo = DEFAULT_NUMBER_TWO;
+let currentNumberTwo = DEFAULT_NUMBERS;
 let currentSelection = DEFAULT_SELECTION;
 
 const setCurrentNumberOne = (newOne) => currentNumberOne = newOne;
@@ -37,7 +36,7 @@ equalsBtn.onclick = () => runOperate();
 
 
 
-// CALCULATOR FUNCTION
+// CALCULATOR OPERATOR FUNCTION
 
 function Calculator() {
 
@@ -70,22 +69,35 @@ function Calculator() {
 
 let calc = new Calculator;
 
-console.log(calc.operate(`${currentNumberOne} ${currentOperator} ${currentNumberTwo}`));
-
 
 // CALCULATOR FUNCTIONALITY
 
-const clearCalc = () => {
+const resetCurrent = () => {
+    currentNumberOne = DEFAULT_NUMBERS; 
+    currentNumberTwo = DEFAULT_NUMBERS;
+    currentOperator = DEFAULT_OPERATOR;
+    currentSelection = DEFAULT_SELECTION;
+};
 
+const clearCalc = () => {
+    resetCurrent();
+    numberOneBtn.textContent = currentNumberOne;
+    operator.textContent = currentOperator;
+    numberTwoBtn.textContent = currentNumberTwo;
 };
 
 
 const runOperate = () => {
     calcAnswer.textContent = calc.operate(`${currentNumberOne} ${currentOperator} ${currentNumberTwo}`);
+    resetCurrent();
 };
 
 
 const inputDigit = function() {
+    if (+currentNumberOne === 0 && +currentNumberTwo === 0) {
+        currentNumberOne = "";
+        currentNumberTwo = "";
+    }
     if (currentSelection === "numberOne") {
         currentNumberOne += this.textContent;
         numberOneBtn.textContent = currentNumberOne;
@@ -101,9 +113,9 @@ digitBtns.forEach((btn) => {
 
 
 const changeOperator = function() {
-    console.log(`${this.textContent}`);
     currentOperator = this.textContent;
     operator.textContent = currentOperator;
+    currentSelection = "numberTwo";
 }
 
 calcOperatorBtns.forEach((btn) => {
