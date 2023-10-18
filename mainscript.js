@@ -12,7 +12,6 @@ let currentSelection = DEFAULT_SELECTION;
 const setCurrentNumberOne = (newOne) => currentNumberOne = newOne;
 const setCurrentOperator = (newOperator) => currentOperator = newOperator;
 const setCurrentNumberTwo = (newTwo) => currentNumberTwo = newTwo;
-const setCurrentSelection = (newSelection) => currentSelection = newSelection;
 
 
 // DOM SELECTORS
@@ -34,6 +33,17 @@ numberTwoBtn.onclick = () => setCurrentSelection('numberTwo');
 clearBtn.onclick = () => clearCalc();
 equalsBtn.onclick = () => runOperate();
 
+const setCurrentSelection = (newSelection) => {
+    currentSelection = newSelection;
+    if (newSelection === 'numberOne') {  //  && numberTwoBtn.className == 'selectedNumber'
+        numberOneBtn.classList.add('selectedNumber');
+        numberTwoBtn.classList.remove('selectedNumber');
+    }
+    if (newSelection === 'numberTwo') {  //  && numberOneBtn.className == 'selectedNumber'
+        numberTwoBtn.classList.add('selectedNumber');
+        numberOneBtn.classList.remove('selectedNumber');
+    }
+};
 
 
 // CALCULATOR OPERATOR FUNCTION
@@ -73,10 +83,10 @@ let calc = new Calculator;
 // CALCULATOR FUNCTIONALITY
 
 const resetCurrent = () => {
-    currentNumberOne = DEFAULT_NUMBERS; 
-    currentNumberTwo = DEFAULT_NUMBERS;
-    currentOperator = DEFAULT_OPERATOR;
-    currentSelection = DEFAULT_SELECTION;
+    setCurrentNumberOne(DEFAULT_NUMBERS); 
+    setCurrentNumberTwo(DEFAULT_NUMBERS);
+    setCurrentOperator(DEFAULT_OPERATOR);
+    setCurrentSelection(DEFAULT_SELECTION);
 };
 
 const clearCalc = () => {
@@ -115,7 +125,7 @@ digitBtns.forEach((btn) => {
 const changeOperator = function() {
     currentOperator = this.textContent;
     operator.textContent = currentOperator;
-    currentSelection = "numberTwo";
+    setCurrentSelection("numberTwo");
 }
 
 calcOperatorBtns.forEach((btn) => {

@@ -16,7 +16,7 @@
     text-align: center;
     box-sizing: border-box;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 
@@ -58,16 +58,38 @@ nav a:hover {
 
 
 /* MAIN */
+main {
+    background-color: #000;
+    min-height: 80dvh;
+    
+}
+
 .calculatorApp * {
     font-size: 2rem;
+    color: var(--clr-silver);
+}
+
+.calculatorApp {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 4rem;
+    padding: 4rem;
+    flex-wrap: wrap;
 }
 
 
 main section {
-    background-color: #bbb;
-    padding: 1rem;
-    margin: 2rem;
-    min-width: 350px;
+    background-color: var(--clr-gold);
+    padding: 1.5rem;
+    min-width: 400px;
+    /* border: 3px solid var(--clr-charcoal); */
+    border-radius: 2rem;
+    box-shadow: 0 0 5px var(--clr-charcoal),
+                0 0 25px var(--clr-gold),
+                /* 0 0 50px var(--clr-gold), */
+                0 0 80px var(--clr-gold);
+
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -81,16 +103,44 @@ main section {
 /* SECTION LEFT */
 .calcInputContainer,
 .calcAnswerContainer {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    width: 80%;
+    width: 90%;
+}
+
+.calcAnswerContainer,
+.calcInput,
+.inputKeys,
+.calcOperator,
+#clear {
+    background-color: var(--clr-charcoal);
+    border: 2px solid var(--clr-silver);
+    border-radius: 1rem;
+}
+
+.calcAnswerContainer,
+.calcInput,
+.inputKeys, 
+#clear {
     padding: 1rem;
 }
 
-#sectionLeft img {
+#ninjaImg {
     width: 150px;
+    border-radius: 2rem;
+    box-shadow: 0 0 8px var(--clr-silver),
+                0 0 25px var(--clr-silver);
+}
+
+#katanaImg {
+    width: 1.5rem;
+}
+
+#appTitle span {
+    color: var(--clr-charcoal);
 }
 
 
@@ -107,8 +157,6 @@ main section {
     aspect-ratio: 1;
 }
 
-
-
 .calcOperatorContainer {
     display: grid;
     grid-template-columns: 1fr;
@@ -116,9 +164,30 @@ main section {
 }
 
 .calcOperator{
-    width: 2.5rem;
-    aspect-ratio: 1;
+    width: 3.5rem;
+    aspect-ratio: 3 / 1;
     margin-inline: auto;
+    font-size: 1.5rem;
+    padding: 4px 1rem;
+}
+
+
+/* BUTTON VISUALS */
+
+.inputKeys:hover,
+.calcOperator:hover,
+#clear:hover {
+    background-color: var(--clr-yellow);
+    border: 2px solid var(--clr-charcoal);
+    color: var(--clr-charcoal);
+    box-shadow: 0 0 12px var(--clr-grey);
+}
+
+.selectedNumber {
+    background-color: var(--clr-yellow);
+    border: 2px solid var(--clr-charcoal);
+    color: var(--clr-charcoal);
+    box-shadow: 0 0 12px var(--clr-grey);
 }
 
 
@@ -131,6 +200,12 @@ header, footer {
     padding: 0.25em 4em;
 }
 
+footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
 
 /* attribution */
 .attribution { 
